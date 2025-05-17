@@ -1,0 +1,15 @@
+---
+-
+  hosts: ubuntu
+  tasks:
+    - name: Copy 60-ansible-motd to /etc/update-motd.d
+      copy:
+        src: 60-ansible-motd
+        dest: /etc/update-motd.d/60ansible-motd
+        mode: preserve
+      notify: MOTD changed
+  handlers:
+    - name: MOTD changed
+      debug:
+        msg: The MOTD was changed
+...
